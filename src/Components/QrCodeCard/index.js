@@ -1,7 +1,28 @@
-import {useState} from "react";
-import { Input, QRCode, Segmented } from 'antd';
+import {useContext, useEffect, useState} from "react";
+import { QRCode } from 'antd';
+import QrContext from '../../Context/qrContext'
 
-function index() {
+function Index() {
+
+  const {destination, qrInput} = useContext(QrContext)
+  const [valueForQr, setValueForQr] = useState("")
+
+  useEffect(()=> {
+    generateValueForQr()
+  },[qrInput])
+
+  const generateValueForQr = () => {
+    switch (destination) {
+      case "URL":
+        setValueForQr(`https://${qrInput}`)
+        break;
+      case "Text":
+        setValueForQr(qrInput)
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <>
       <h2>Preview QR Code</h2>
@@ -12,10 +33,10 @@ function index() {
           width: 350
         }}
         errorLevel={'L'}
-        value="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+        value={valueForQr}
       />
     </>
   );
 }
 
-export default index;
+export default Index;

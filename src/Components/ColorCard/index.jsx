@@ -52,7 +52,7 @@ function index() {
     <Row gutter={[8, 24]} style={{alignContent:"center !important", textAlign:"center"}}>
         {
             destinationArray.map((item) => (
-                <Col span={4} style={{paddingLeft:"35px"}}>
+                <Col span={4} style={{paddingLeft:""}}>
                     <div className="icon-card">
                     <Card style={{backgroundColor:`${item.name}`, height:"40px", width:"40px"}}></Card>
                     </div>

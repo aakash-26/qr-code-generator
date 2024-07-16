@@ -6,6 +6,8 @@ import PatternCard from '../PatternCard'
 import ColorCard from '../ColorCard'
 import InputContent  from '../InputContent'
 import QrCodeCard from'../QrCodeCard'
+import DownloadQr from '../DownloadQr'
+
 function index() {
   return (
     <>
@@ -33,6 +35,7 @@ function index() {
             <Col span={5} offset={1}>
             <Card className='content-card'>
                 <QrCodeCard />
+                <DownloadQr />
             </Card>
             </Col>
         </Row>

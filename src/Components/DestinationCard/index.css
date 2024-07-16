@@ -1,22 +1,26 @@
-.icon-card {
-    min-height: 60px;
-    display: flex;
+.destination-icon-card {
+    height: 60px !important;
     align-items: center;
     justify-content: center;
-    background: #EBEBE4;
-    box-shadow: 0 1px 3px #0000001a, 0 1px 2px #0000000f;
-    border: 2px solid transparent;
-    width: 90%;
+    width: 40%;
     border-radius: 6%;
+    margin: 10px;
     
 }
-.icon-card:hover{
+/* .icon-card:hover{
     cursor: pointer;
     border: 1px solid blue;
     z-index: 500;
     background: white;
     color: blue;
 
+} */
+.active {
+    cursor: pointer;
+    border: 1px solid blue;
+    z-index: 500;
+    background: white;
+    color: blue;
 }
 .icon-name {
     margin-top: 0.5rem;
