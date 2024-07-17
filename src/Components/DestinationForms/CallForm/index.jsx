@@ -1,13 +1,17 @@
 import React from 'react'
-import { InputNumber } from 'antd'
+import { Input } from 'antd'
+import QrContext from '../../../Context/qrContext'
 
-function index() {
+function Index() {
+
+  const {setQrInput} = React.useContext(QrContext)
+
   return (
     <>
         <h2>Enter your phone</h2>
-        <InputNumber size='large' placeholder='Enter phone' style={{height:"50px", width:"100%"}}  />
+        <Input size='large' placeholder='Enter phone' style={{height:"50px", width:"100%"}} onChange={(e)=>{setTimeout(()=>{setQrInput(e.target.value)}, 2000)}}  />
     </> 
   )
 }
 
-export default index
+export default Index

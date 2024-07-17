@@ -1,6 +1,6 @@
-import React, {useContext} from 'react'
+import React, { useContext } from "react";
 import "./index.css";
-import { Card, Radio, Flex } from "antd";
+import { Card, Radio, Flex, Tooltip } from "antd";
 import { CiText } from "react-icons/ci";
 import { ImLink } from "react-icons/im";
 import { TfiEmail } from "react-icons/tfi";
@@ -67,12 +67,11 @@ let destinationArray = [
 ];
 
 function Index() {
-
-  const {setDestination} = useContext(QrContext)
+  const { setDestination } = useContext(QrContext);
 
   const onChange = (e) => {
     console.log("radio checked", e.target.value);
-    setDestination(e.target.value)
+    setDestination(e.target.value);
   };
 
   return (
@@ -83,12 +82,14 @@ function Index() {
           <Radio.Group defaultValue="URL" size="large" onChange={onChange}>
             {destinationArray.map((item) => (
               <>
-                <Radio.Button
-                  className="destination-icon-card"
-                  value={item.name}
-                >
-                  <div style={{ paddingTop: "10px" }}>{item.icon}</div>
-                </Radio.Button>
+                <Tooltip title={item.name}>
+                  <Radio.Button
+                    className="destination-icon-card"
+                    value={item.name}
+                  >
+                    <div style={{ paddingTop: "10px" }}>{item.icon}</div>
+                  </Radio.Button>
+                </Tooltip>
               </>
             ))}
           </Radio.Group>

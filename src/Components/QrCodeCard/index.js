@@ -19,6 +19,9 @@ function Index() {
       case "Text":
         setValueForQr(qrInput)
         break;
+      case "Call":
+        setValueForQr(`TEL:+91${qrInput}`)
+        break;
       default:
         break;
     }
