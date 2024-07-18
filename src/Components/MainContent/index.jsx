@@ -28,7 +28,7 @@ function index() {
             <Col span={10} offset={1}>
             <Card className='content-card'>
                 <InputContent />
-                <PatternCard />
+                {/* <PatternCard /> */}
                 <ColorCard />
             </Card>
             </Col>

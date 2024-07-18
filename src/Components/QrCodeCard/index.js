@@ -1,43 +1,36 @@
-import {useContext, useEffect, useState} from "react";
-import { QRCode } from 'antd';
-import QrContext from '../../Context/qrContext'
+import { useContext, useEffect, useState } from "react";
+import { QRCode } from "antd";
+import QrContext from "../../Context/qrContext";
+import useQrCodeValue from "../../Hooks/useQrCodeValue";
 
 function Index() {
+  const { destination, qrInput, qrColor, qrSize, renderType } =
+    useContext(QrContext);
+  const [valueForQr] = useQrCodeValue(destination, qrInput);
+  console.log("valueForQr ", valueForQr);
 
-  const {destination, qrInput} = useContext(QrContext)
-  const [valueForQr, setValueForQr] = useState("")
-
-  useEffect(()=> {
-    generateValueForQr()
-  },[qrInput])
-
-  const generateValueForQr = () => {
-    switch (destination) {
-      case "URL":
-        setValueForQr(`https://${qrInput}`)
-        break;
-      case "Text":
-        setValueForQr(qrInput)
-        break;
-      case "Call":
-        setValueForQr(`TEL:+91${qrInput}`)
-        break;
-      default:
-        break;
-    }
+  function doDownload(url, fileName) {
+    const a = document.createElement("a");
+    a.download = fileName;
+    a.href = url;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
   return (
     <>
-      <h2>Preview QR Code</h2>
-      <QRCode
-        style={{
-          marginBottom: 16,
-          height: 350,
-          width: 350
-        }}
-        errorLevel={'L'}
-        value={valueForQr}
-      />
+      {qrInput && (
+        <>
+          <h2>Preview QR Code</h2>
+          <QRCode
+            errorLevel={"H"}
+            value={valueForQr}
+            color={qrColor}
+            size={qrSize}
+            type={renderType}
+          />
+        </>
+      )}
     </>
   );
 }
