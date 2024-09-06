@@ -16,7 +16,7 @@ function useQrCodeValue(destination, input) {
               setValueForQr(input)
               break;
             case "Call":
-              setValueForQr(`TEL:+91${input}`)
+              setValueForQr(`tel:+91${input}`)
               break;
             case "Email":
                 setValueForQr(`mailto:${input}`)

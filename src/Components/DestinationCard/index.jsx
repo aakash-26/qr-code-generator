@@ -70,11 +70,16 @@ function Index() {
   const { setDestination, setQrInput } = useContext(QrContext);
 
   const onChange = (e) => {
-    console.log("radio checked", e.target.value);
-    setDestination(e.target.value);
-    setQrInput(null);
-  };
+    try{
+      console.log("radio checked", e.target.value);
+      setDestination(e.target.value);
+      setQrInput(null);
+    }
+    catch(e){
+      console.log("from catch")
+    }
 
+  };
   return (
     <>
       <Card className="content-card">

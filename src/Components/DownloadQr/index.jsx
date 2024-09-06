@@ -1,9 +1,16 @@
 import { useContext } from "react";
 import { Slider, Button, Row, Col, Card, Segmented } from "antd";
 import QrContext from "../../Context/qrContext";
+import useThrottle from "../../Hooks/useThrottle";
 
 function Index() {
   const { setQrSize, setRenderType } = useContext(QrContext);
+
+  const downloadQr = () => {
+    console.log("clicked")
+  }
+  const throttleFunction = useThrottle(downloadQr, 2000)
+
 
   return (
     <>
@@ -28,7 +35,8 @@ function Index() {
       />
       <br />
       <Row>
-        <Button style={{ width: "100%" }} type="primary" size="large" danger>
+        <Button onClick={throttleFunction} style={{ width: "100%" }} type="primary" size="large" danger>
+        {/* <Button onClick={downloadQr} style={{ width: "100%" }} type="primary" size="large" danger> */}
           Download QR Code
         </Button>
       </Row>
